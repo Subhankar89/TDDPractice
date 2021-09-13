@@ -10,8 +10,14 @@ import XCTest
 
 class UsersTableVCTest: XCTestCase {
     
-    func test() {
-        XCTFail("Initial failing Test.")
+    func can_Initialise_tableView() throws {
+        //let bundle = Bundle(for: UsersTableVC.self)
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        
+        //let initialVC = storyBoard.instantiateViewController()
+        let navigation = try XCTUnwrap(initialVC as? UINavigationController)
+        
+        //_ = try XCTUnwrap(navigation.topViewController as? UsersTableVC)
     }
 }
 
