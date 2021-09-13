@@ -6,8 +6,12 @@
 //
 
 import XCTest
+@testable import SampleApp
 
-class SampleAppTests: XCTestCase {
-
+class UsersTableVCTest: XCTestCase {
     
+    func test() {
+        XCTFail("Initial failing Test.")
+    }
 }
+
