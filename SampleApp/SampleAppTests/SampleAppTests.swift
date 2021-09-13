@@ -11,27 +11,35 @@ import XCTest
 class UsersTableVCTest: XCTestCase {
     
     func test_canInitialise_tableView() throws {
-        let bundle = Bundle(for: UsersTableVC.self)
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: bundle)
         
-        let initialVC = storyBoard.instantiateInitialViewController()
-        let navigation = try XCTUnwrap(initialVC as? UINavigationController)
-        
-        _ = try XCTUnwrap(navigation.topViewController as? UsersTableVC)
+        _ = try makeSUT()
     }
     
     func test_viewDidLoad_setTitle() throws {
+        
+        let sut = try makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.title, "Users")
+    }
+    
+    func test_viewDidLoad_configureTableView() throws {
+        
+        let sut = try makeSUT()
+        sut.loadViewIfNeeded()
+        
+        XCTAssertIdentical(sut.userTableView.delegate, sut)
+        XCTAssertIdentical(sut.userTableView.dataSource, sut)
+    }
+    
+    private func makeSUT() throws -> UsersTableVC {
+        
         let bundle = Bundle(for: UsersTableVC.self)
         let storyBoard = UIStoryboard.init(name: "Main", bundle: bundle)
         
         let initialVC = storyBoard.instantiateInitialViewController()
         let navigation = try XCTUnwrap(initialVC as? UINavigationController)
         
-        let sut = try XCTUnwrap(navigation.topViewController as? UsersTableVC)
-        
-        sut.loadViewIfNeeded()
-        
-        XCTAssertEqual(sut.title, "Users")
+        return try XCTUnwrap(navigation.topViewController as? UsersTableVC)
     }
 }
 
