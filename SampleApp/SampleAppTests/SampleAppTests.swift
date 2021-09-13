@@ -19,5 +19,19 @@ class UsersTableVCTest: XCTestCase {
         
         _ = try XCTUnwrap(navigation.topViewController as? UsersTableVC)
     }
+    
+    func test_viewDidLoad_setTitle() throws {
+        let bundle = Bundle(for: UsersTableVC.self)
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: bundle)
+        
+        let initialVC = storyBoard.instantiateInitialViewController()
+        let navigation = try XCTUnwrap(initialVC as? UINavigationController)
+        
+        let sut = try XCTUnwrap(navigation.topViewController as? UsersTableVC)
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.title, "Users")
+    }
 }
 
