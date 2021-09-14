@@ -12,7 +12,7 @@ class UserFormModelTest: XCTestCase {
     
     func test_userFormModel_canCreateInsatnce() {
         let instanceSetup = UserFormModel(
-            id: "1",
+            id: 1,
             name: "Subhankar Acharya",
             email: "subhankaracharya@gmail.com"
         )

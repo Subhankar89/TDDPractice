@@ -15,6 +15,7 @@
 		9E5A122B26EB81BE002021DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E5A122926EB81BE002021DF /* LaunchScreen.storyboard */; };
 		9E5A123926EB8219002021DF /* UsersTableVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A123826EB8219002021DF /* UsersTableVCTest.swift */; };
 		9EB0E3D926F07EEF00715AE3 /* UserFormModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0E3D826F07EEF00715AE3 /* UserFormModelTest.swift */; };
+		9EB0E3DC26F0820300715AE3 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0E3DB26F0820300715AE3 /* Users.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		9E5A123826EB8219002021DF /* UsersTableVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableVCTest.swift; sourceTree = "<group>"; };
 		9E5A123A26EB8219002021DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EB0E3D826F07EEF00715AE3 /* UserFormModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFormModelTest.swift; sourceTree = "<group>"; };
+		9EB0E3DB26F0820300715AE3 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		9E5A121D26EB81BD002021DF /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				9EB0E3DA26F081EF00715AE3 /* Model */,
 				9E5A121E26EB81BD002021DF /* AppDelegate.swift */,
 				9E5A122026EB81BD002021DF /* SceneDelegate.swift */,
 				9EE2298026EF3A5600552720 /* Controller */,
@@ -100,6 +103,14 @@
 				9E5A123A26EB8219002021DF /* Info.plist */,
 			);
 			path = SampleAppTests;
+			sourceTree = "<group>";
+		};
+		9EB0E3DA26F081EF00715AE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9EB0E3DB26F0820300715AE3 /* Users.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9EE2298026EF3A5600552720 /* Controller */ = {
@@ -210,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB0E3DC26F0820300715AE3 /* Users.swift in Sources */,
 				9E5A122326EB81BD002021DF /* UsersTableVC.swift in Sources */,
 				9E5A121F26EB81BD002021DF /* AppDelegate.swift in Sources */,
 				9E5A122126EB81BD002021DF /* SceneDelegate.swift in Sources */,
