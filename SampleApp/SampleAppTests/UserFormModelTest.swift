@@ -21,10 +21,16 @@ class UserFormModelTest: XCTestCase {
         let sut = makeSUT()
         XCTAssertTrue(sut.isValidName())
     }
+    
+    func test_userFormModel_shouldPassIfNotValidEmail() {
+        
+       let userFormModel = UserFormModel(id: 1, name: "Subhankar", email: "xxxx")
+        XCTAssertFalse(userFormModel.isValidEmail())
+    }
 
     private func makeSUT() -> UserFormModel {
         
-        let userModel = UserFormModel(id: 1, name: "Subhankar", email: "xyz@gmail.com")
+        var userModel = UserFormModel(id: 1, name: "Subhankar", email: "xyz@gmail.com")
         return userModel
     }
 }
