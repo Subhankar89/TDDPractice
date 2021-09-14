@@ -27,6 +27,7 @@ class UsersTableVCTest: XCTestCase {
         let sut = try makeSUT()
         sut.loadViewIfNeeded()
         
+        //this checks the pointer
         XCTAssertIdentical(sut.userTableView.delegate, sut)
         XCTAssertIdentical(sut.userTableView.dataSource, sut)
     }
