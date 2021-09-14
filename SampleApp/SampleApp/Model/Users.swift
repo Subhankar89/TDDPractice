@@ -13,4 +13,9 @@ struct UserFormModel {
     let email: String
 }
 
+extension UserFormModel {
+    func isValidName() -> Bool {
+        return name.count > 1
+    }
+}
 
