@@ -30,7 +30,7 @@ class UserFormModelTest: XCTestCase {
 
     private func makeSUT() -> UserFormModel {
         
-        var userModel = UserFormModel(id: 1, name: "Subhankar", email: "xyz@gmail.com")
+        let userModel = UserFormModel(id: 1, name: "Subhankar", email: "xyz@gmail.com")
         return userModel
     }
 }
