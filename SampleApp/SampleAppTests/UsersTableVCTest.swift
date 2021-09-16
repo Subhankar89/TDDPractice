@@ -32,6 +32,15 @@ class UsersTableVCTest: XCTestCase {
         XCTAssertIdentical(sut.userTableView.dataSource, sut)
     }
     
+    func test_viewDidLoad_initialState() throws {
+        
+        let sut = try makeSUT()
+        sut.loadViewIfNeeded()
+        
+        //checks initial state of tableview before load
+        XCTAssertEqual(sut.userTableView.numberOfRows(inSection: 0), 0)
+    }
+    
     private func makeSUT() throws -> UsersTableVC {
         
         let bundle = Bundle(for: UsersTableVC.self)
