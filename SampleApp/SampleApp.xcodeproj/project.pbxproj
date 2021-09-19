@@ -16,6 +16,8 @@
 		9E5A123926EB8219002021DF /* UsersTableVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A123826EB8219002021DF /* UsersTableVCTest.swift */; };
 		9EB0E3D926F07EEF00715AE3 /* UserFormModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0E3D826F07EEF00715AE3 /* UserFormModelTest.swift */; };
 		9EB0E3DC26F0820300715AE3 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0E3DB26F0820300715AE3 /* Users.swift */; };
+		9EBC0E0626F71C8200617B9A /* APIManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBC0E0526F71C8200617B9A /* APIManagerTest.swift */; };
+		9EEE96E026F7291A00B882FD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEE96DF26F7291A00B882FD /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		9E5A123A26EB8219002021DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EB0E3D826F07EEF00715AE3 /* UserFormModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFormModelTest.swift; sourceTree = "<group>"; };
 		9EB0E3DB26F0820300715AE3 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		9EBC0E0526F71C8200617B9A /* APIManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTest.swift; sourceTree = "<group>"; };
+		9EEE96DF26F7291A00B882FD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 		9E5A121D26EB81BD002021DF /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				9EEE96DE26F7290700B882FD /* Service */,
 				9EB0E3DA26F081EF00715AE3 /* Model */,
 				9E5A121E26EB81BD002021DF /* AppDelegate.swift */,
 				9E5A122026EB81BD002021DF /* SceneDelegate.swift */,
@@ -100,6 +105,7 @@
 			children = (
 				9E5A123826EB8219002021DF /* UsersTableVCTest.swift */,
 				9EB0E3D826F07EEF00715AE3 /* UserFormModelTest.swift */,
+				9EBC0E0526F71C8200617B9A /* APIManagerTest.swift */,
 				9E5A123A26EB8219002021DF /* Info.plist */,
 			);
 			path = SampleAppTests;
@@ -119,6 +125,14 @@
 				9E5A122226EB81BD002021DF /* UsersTableVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9EEE96DE26F7290700B882FD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9EEE96DF26F7291A00B882FD /* APIManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +237,7 @@
 			files = (
 				9EB0E3DC26F0820300715AE3 /* Users.swift in Sources */,
 				9E5A122326EB81BD002021DF /* UsersTableVC.swift in Sources */,
+				9EEE96E026F7291A00B882FD /* APIManager.swift in Sources */,
 				9E5A121F26EB81BD002021DF /* AppDelegate.swift in Sources */,
 				9E5A122126EB81BD002021DF /* SceneDelegate.swift in Sources */,
 			);
@@ -234,6 +249,7 @@
 			files = (
 				9EB0E3D926F07EEF00715AE3 /* UserFormModelTest.swift in Sources */,
 				9E5A123926EB8219002021DF /* UsersTableVCTest.swift in Sources */,
+				9EBC0E0626F71C8200617B9A /* APIManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

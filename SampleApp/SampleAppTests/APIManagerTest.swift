@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import SampleApp
 
 class APIManagerTest: XCTestCase {
 
