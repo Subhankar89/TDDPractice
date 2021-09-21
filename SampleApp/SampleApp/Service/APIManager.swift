@@ -8,6 +8,7 @@
 import Foundation
 
 class APIManager {
-    
-    
+    func getMovies(completion: @escaping([UserFormModel]?, Error?) -> Void ) {
+        
+    }
 }

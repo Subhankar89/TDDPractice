@@ -12,8 +12,7 @@ class APIManagerTest: XCTestCase {
 
     func test_getUser_WithExpectedURLHostAndPath() {
         let apiManager = APIManager()
-        apiRepository.getMovies { movies, error in  }
+        apiManager.getMovies { movies, error in  }
         
     }
-
 }
