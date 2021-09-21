@@ -12,6 +12,8 @@ class APIManagerTest: XCTestCase {
 
     func test_getUser_WithExpectedURLHostAndPath() {
         let apiManager = APIManager()
+        let mockURLSession = MockURLSession()
+        apiManager.session = mockURLSession
         apiManager.getMovies { movies, error in  }
         
     }
