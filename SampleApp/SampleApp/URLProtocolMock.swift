@@ -7,34 +7,36 @@
 
 import Foundation
 
-class URLProtocolMock: URLProtocol {
-    // this dictionary maps URLs to test data
-    static var testURLs = [URL?: Data]()
-
-    // say we want to handle all types of request
+class MockURLProtocol: URLProtocol {
+    
+    //Handler to test the request and return mock response.
+    static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
+    
     override class func canInit(with request: URLRequest) -> Bool {
         return true
     }
-
-    // ignore this method; just send back what we were given
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
+    override func stopLoading() {
 
-    override func startLoading() {
-        // if we have a valid URL…
-        if let url = request.url {
-            // …and if we have test data for that URL…
-            if let data = URLProtocolMock.testURLs[url] {
-                // …load it immediately.
-                self.client?.urlProtocol(self, didLoad: data)
-            }
-        }
-
-        // mark that we've finished
-        self.client?.urlProtocolDidFinishLoading(self)
     }
-
-    // this method is required but doesn't need to do anything
-    override func stopLoading() { }
+    override func startLoading() {
+         guard let handler = MockURLProtocol.requestHandler else {
+            return
+        }
+        do {
+            //Call handler with received request and capture the tuple of response and data.
+            let (response, data)  = try handler(request)
+            //Send received response to the client.
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+            //Send received data to the client.
+            client?.urlProtocol(self, didLoad: data)
+            //Notify request has been finished.
+            client?.urlProtocolDidFinishLoading(self)
+        } catch  {
+            // Notify received error.
+            client?.urlProtocol(self, didFailWithError: error)
+        }
+    }
 }

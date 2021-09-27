@@ -10,58 +10,68 @@ import XCTest
 
 class APIManagerTest: XCTestCase {
     
-    func testGetMovieWithExpectedURLHostAndPath() {
-        // this is the URL we expect to call
-        let url = URL(string: "https://jsonplaceholder.typicode.com/users")
-
-        // attach that to some fixed data in our protocol handler
-        URLProtocolMock.testURLs = [url: Data( """
-        {
-        "id": 1,
-        "name": "Leanne Graham",
-        "username": "Bret",
-        "email": "Sincere@april.biz",
-        "address": {
-          "street": "Kulas Light",
-          "suite": "Apt. 556",
-          "city": "Gwenborough",
-          "zipcode": "92998-3874",
-          "geo": {
-            "lat": "-37.3159",
-            "lng": "81.1496"
-          }
-        },
-        "phone": "1-770-736-8031 x56442",
-        "website": "hildegard.org",
-        "company": {
-          "name": "Romaguera-Crona",
-          "catchPhrase": "Multi-layered client-server neural-net",
-          "bs": "harness real-time e-markets"
-        }
-        }
-        """.utf8)]
-
-        // now set up a configuration to use our mock
-        let config = URLSessionConfiguration.ephemeral
-        config.protocolClasses = [URLProtocolMock.self]
-
-        // and create the URLSession from that
-        let session = URLSession(configuration: config)
+    var apiManager: APIManager!
+    var expectation: XCTestExpectation!
+    let apiURL = URL(string: "https://jsonplaceholder.typicode.com/users")!
+    
+    override func setUp() {
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession.init(configuration: configuration)
         
-        makeSUT.getUser(using: session) {
-            XCTAssertEqual(user.purchaseCount, 0)
-            expectation.fulfill()
-        }
+        apiManager = APIManager(urlSession: urlSession)
+        expectation = expectation(description: "Expectation")
     }
     
-    private func makeSUT() throws -> UsersTableVC {
+    func testSuccessfulResponse() {
+        // Prepare mock response
+        let jsonString = """
+                            [{
+                            "id": 1,
+                            "name": "Leanne Graham",
+                            "username": "Bret",
+                            "email": "Sincere@april.biz",
+                            "address": {
+                              "street": "Kulas Light",
+                              "suite": "Apt. 556",
+                              "city": "Gwenborough",
+                              "zipcode": "92998-3874",
+                              "geo": {
+                                "lat": "-37.3159",
+                                "lng": "81.1496"
+                              }
+                            },
+                            "phone": "1-770-736-8031 x56442",
+                            "website": "hildegard.org",
+                            "company": {
+                              "name": "Romaguera-Crona",
+                              "catchPhrase": "Multi-layered client-server neural-net",
+                              "bs": "harness real-time e-markets"
+                            }
+                            }]
+                        """
+        let data = jsonString.data(using: .utf8)!
         
-        let bundle = Bundle(for: UsersTableVC.self)
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: bundle)
+        MockURLProtocol.requestHandler = { request in
+            guard let url = request.url, url == self.apiURL else {
+                throw APIResponseError.inavlidResponse
+            }
+            
+            let response = HTTPURLResponse(url: self.apiURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (response, data)
+        }
         
-        let initialVC = storyBoard.instantiateInitialViewController()
-        let navigation = try XCTUnwrap(initialVC as? UINavigationController)
-        
-        return try XCTUnwrap(navigation.topViewController as? UsersTableVC)
+        // Call API.
+        apiManager.getUsers { (result) in
+            switch result {
+            case .success(let users):
+                XCTAssertEqual(users.count, 1)
+            case .failure(let error):
+                XCTFail("Error was not expected: \(error)")
+            }
+            self.expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1.0)
     }
 }
+
