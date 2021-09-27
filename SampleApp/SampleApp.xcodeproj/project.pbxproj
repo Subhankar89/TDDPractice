@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E55ED082701CF1200B9F25B /* APIManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55ED072701CF1200B9F25B /* APIManagerTest.swift */; };
+		9E55ED0A2701D47800B9F25B /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55ED092701D47800B9F25B /* URLProtocolMock.swift */; };
+		9E55ED0C2701D65800B9F25B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55ED0B2701D65800B9F25B /* APIManager.swift */; };
 		9E5A121F26EB81BD002021DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A121E26EB81BD002021DF /* AppDelegate.swift */; };
 		9E5A122126EB81BD002021DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A122026EB81BD002021DF /* SceneDelegate.swift */; };
 		9E5A122326EB81BD002021DF /* UsersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A122226EB81BD002021DF /* UsersTableVC.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E55ED072701CF1200B9F25B /* APIManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTest.swift; sourceTree = "<group>"; };
+		9E55ED092701D47800B9F25B /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		9E55ED0B2701D65800B9F25B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9E5A121B26EB81BD002021DF /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E5A121E26EB81BD002021DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E5A122026EB81BD002021DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 			children = (
 				9EB0E3DA26F081EF00715AE3 /* Model */,
 				9E5A121E26EB81BD002021DF /* AppDelegate.swift */,
+				9E55ED092701D47800B9F25B /* URLProtocolMock.swift */,
+				9E55ED0B2701D65800B9F25B /* APIManager.swift */,
 				9E5A122026EB81BD002021DF /* SceneDelegate.swift */,
 				9EE2298026EF3A5600552720 /* Controller */,
 				9E5A122426EB81BD002021DF /* Main.storyboard */,
@@ -100,6 +108,7 @@
 			children = (
 				9E5A123826EB8219002021DF /* UsersTableVCTest.swift */,
 				9EB0E3D826F07EEF00715AE3 /* UserFormModelTest.swift */,
+				9E55ED072701CF1200B9F25B /* APIManagerTest.swift */,
 				9E5A123A26EB8219002021DF /* Info.plist */,
 			);
 			path = SampleAppTests;
@@ -221,6 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E55ED0C2701D65800B9F25B /* APIManager.swift in Sources */,
+				9E55ED0A2701D47800B9F25B /* URLProtocolMock.swift in Sources */,
 				9EB0E3DC26F0820300715AE3 /* Users.swift in Sources */,
 				9E5A122326EB81BD002021DF /* UsersTableVC.swift in Sources */,
 				9E5A121F26EB81BD002021DF /* AppDelegate.swift in Sources */,
@@ -234,6 +245,7 @@
 			files = (
 				9EB0E3D926F07EEF00715AE3 /* UserFormModelTest.swift in Sources */,
 				9E5A123926EB8219002021DF /* UsersTableVCTest.swift in Sources */,
+				9E55ED082701CF1200B9F25B /* APIManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
