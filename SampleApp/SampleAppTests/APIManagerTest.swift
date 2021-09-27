@@ -48,9 +48,20 @@ class APIManagerTest: XCTestCase {
         // and create the URLSession from that
         let session = URLSession(configuration: config)
         
-        object.getUser(using: session) {
+        makeSUT.getUser(using: session) {
             XCTAssertEqual(user.purchaseCount, 0)
             expectation.fulfill()
         }
+    }
+    
+    private func makeSUT() throws -> UsersTableVC {
+        
+        let bundle = Bundle(for: UsersTableVC.self)
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: bundle)
+        
+        let initialVC = storyBoard.instantiateInitialViewController()
+        let navigation = try XCTUnwrap(initialVC as? UINavigationController)
+        
+        return try XCTUnwrap(navigation.topViewController as? UsersTableVC)
     }
 }
