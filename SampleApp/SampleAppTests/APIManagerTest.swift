@@ -73,5 +73,32 @@ class APIManagerTest: XCTestCase {
         }
         wait(for: [expectation], timeout: 1.0)
     }
+    
+    func testParsingFailure() {
+        // Prepare response
+        let data = Data()
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: self.apiURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (response, data)
+        }
+        
+        // Call API.
+        apiManager.getUsers { (result) in
+            switch result {
+            case .success(_):
+                XCTFail("Success response was not expected.")
+            case .failure(let error):
+                guard let error = error as? APIResponseError else {
+                    XCTFail("Incorrect error received.")
+                    self.expectation.fulfill()
+                    return
+                }
+                
+                XCTAssertEqual(error, APIResponseError.inavlidResponse, "Parsing error was expected.")
+            }
+            self.expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1.0)
+    }
 }
 
