@@ -15,30 +15,32 @@ class APIManager {
         self.urlSession = urlSession
     }
     
-    func getUsers(completion: @escaping (Result<[UserFormModel], Error>) -> Void ) {
+    func getUsers(completion: @escaping (Result<[UserFormModel], APIResponseError>) -> Void ) {
         let urlString = "https://jsonplaceholder.typicode.com/users"
         
         let url = URL(string: urlString)!
         
         let dataTask = urlSession.dataTask(with: url) { data, response, error in
             
-            if let error = error {
-                completion(.failure(error))
+            if let _ = error {
+                completion(.failure(.unableToComplete))
             }
             // Check response code.
             guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
-                completion(Result.failure(APIResponseError.inavlidResponse))
+                completion(.failure(.inavlidResponse))
                 return
             }
             
             guard let data = data else {
+                completion(.failure(.invalidData))
                 return
             }
+            
             do {
                 let users = try JSONDecoder().decode([UserFormModel].self, from: data)
                 completion(.success(users))
-            } catch let error {
-                completion(.failure(error))
+            } catch {
+                completion(.failure(.invalidData))
             }
         }
         dataTask.resume()

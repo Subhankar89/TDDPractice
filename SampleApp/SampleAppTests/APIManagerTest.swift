@@ -88,13 +88,8 @@ class APIManagerTest: XCTestCase {
             case .success(_):
                 XCTFail("Success response was not expected.")
             case .failure(let error):
-                guard let error = error as? APIResponseError else {
-                    XCTFail("Incorrect error received.")
-                    self.expectation.fulfill()
-                    return
-                }
-                
-                XCTAssertEqual(error, APIResponseError.inavlidResponse, "Parsing error was expected.")
+                 let error = error
+                 XCTAssertEqual(error, APIResponseError.invalidData, "Parsing error was expected.")
             }
             self.expectation.fulfill()
         }
