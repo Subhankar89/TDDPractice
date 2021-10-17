@@ -41,6 +41,16 @@ class UsersTableVCTest: XCTestCase {
         XCTAssertEqual(sut.userTableView.numberOfRows(inSection: 0), 0)
     }
     
+    func test_viewDidLoad_renderUsersFromAPI() throws {
+        let sut = try makeSUT()
+        sut.getUsers = { completion in
+            completion(.success([UserFormModel]))
+        }
+        sut.loadViewIfNeeded()
+        
+        //checks initial state of tableview before load
+        XCTAssertEqual(sut.userTableView.numberOfRows(inSection: 0), 5)
+    }
     private func makeSUT() throws -> UsersTableVC {
         
         let bundle = Bundle(for: UsersTableVC.self)
