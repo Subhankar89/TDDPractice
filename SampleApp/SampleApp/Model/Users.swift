@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserFormModel {
+struct UserFormModel: Decodable {
     let id: Int
     let name: String
     let email: String

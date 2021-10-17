@@ -17,12 +17,18 @@ class UsersTableVC: UIViewController {
         self.title = "Users"
         
         configureTableView()
+        
+        getUsersFromSingleton()
     }
     
     //configure delegate and datasource of tableview
     func configureTableView() {
         userTableView.delegate = self
         userTableView.dataSource = self
+    }
+    
+    func getUsersFromSingleton() {
+        
     }
 }
 
